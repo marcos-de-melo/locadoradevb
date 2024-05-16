@@ -27,5 +27,36 @@
             </li>
         </ul>
     </header>
+    <main>
+        <?php
+          if(isset($_GET["menu"])){
+            $menu = $_GET["menu"];
+          }else{
+            $menu = "";
+          }
+   switch($menu){
+    case "home":
+        include("home.php");
+        break;
+    case "lista-videos":
+        include("lista-videos.php");
+        break;
+    case "lista-categorias":
+        include("lista-categorias.php");
+        break;
+    case "lista-clientes":
+        include("lista-clientes.php");
+        break;
+    case "locacoes":
+        include("locacoes.php");
+        break;
+    default:
+    include("home.php");
+   }       
+
+         
+            
+        ?>
+    </main>
 </body>
 </html>
