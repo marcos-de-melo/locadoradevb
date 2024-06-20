@@ -11,12 +11,20 @@ case
     when statusVideo = 3 then 'Indisponivel'
 end as statusVideo 
  from 
-tbvideos as v inner join tbcategorias as c on v.idCategoria = c.idCategoria";
+tbvideos as v inner join tbcategorias as c on v.idCategoria = c.idCategoria 
+order by tituloVideo asc";
 $rs = mysqli_query($conexao,$sql);
 ?>
 <h2>Lista de Vídeos</h2>
 <div>
     <a href="index.php?menu=cad-videos">Novo Vídeo</a>
+</div>
+<div>
+    <form action="index.php?menu=lista-videos" method="post">
+      <label for="txtPesquisa">Pesquisar</label>
+      <input type="search" name="txtPesquisa" id="txtPesquisa"> 
+       <button type="submit"><i class="ph ph-magnifying-glass"></i></button>
+    </form>
 </div>
 <table border="1">
     <thead>
