@@ -5,13 +5,19 @@ tituloVideo,
 duracaoVideo,
 valorLocacaoVideo,
 nomeCategoria,
-statusVideo
+case
+	when statusVideo = 1 then 'Disponivel'
+    when statusVideo = 2 then 'Locado'
+    when statusVideo = 3 then 'Indisponivel'
+end as statusVideo 
  from 
 tbvideos as v inner join tbcategorias as c on v.idCategoria = c.idCategoria";
 $rs = mysqli_query($conexao,$sql);
 ?>
 <h2>Lista de Vídeos</h2>
-
+<div>
+    <a href="index.php?menu=cad-videos">Novo Vídeo</a>
+</div>
 <table border="1">
     <thead>
         <tr>

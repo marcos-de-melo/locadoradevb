@@ -45,6 +45,12 @@ include("./db/conexao.php");
     case "lista-videos":
         include("lista-videos.php");
         break;
+    case "cad-videos":
+        include("cad-videos.php");
+        break;
+    case "inserir-videos":
+        include("inserir-videos.php");
+        break;
     case "lista-categorias":
         include("lista-categorias.php");
         break;
