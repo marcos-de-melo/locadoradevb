@@ -13,7 +13,7 @@ end as statusVideo
  from 
 tbvideos as v inner join tbcategorias as c on v.idCategoria = c.idCategoria 
 order by tituloVideo asc";
-$rs = mysqli_query($conexao,$sql);
+$rs = mysqli_query($conexao, $sql);
 ?>
 <h2>Lista de Vídeos</h2>
 <div>
@@ -21,9 +21,9 @@ $rs = mysqli_query($conexao,$sql);
 </div>
 <div>
     <form action="index.php?menu=lista-videos" method="post">
-      <label for="txtPesquisa">Pesquisar</label>
-      <input type="search" name="txtPesquisa" id="txtPesquisa"> 
-       <button type="submit"><i class="ph ph-magnifying-glass"></i></button>
+        <label for="txtPesquisa">Pesquisar</label>
+        <input type="search" name="txtPesquisa" id="txtPesquisa">
+        <button type="submit"><i class="ph ph-magnifying-glass"></i></button>
     </form>
 </div>
 <table border="1">
@@ -35,22 +35,30 @@ $rs = mysqli_query($conexao,$sql);
             <th>Valor da Locação</th>
             <th>Categoria</th>
             <th>Status</th>
+            <th>Editar</th>
+            <th>Excluir</th>
         </tr>
     </thead>
     <tbody>
-       <?php
-       while($dados = mysqli_fetch_assoc($rs)){
-       ?>
-        <tr>
-            <td><?=$dados["idVideo"]?></td>
-            <td><?=$dados["tituloVideo"]?></td>
-            <td><?=$dados["duracaoVideo"]?></td>
-            <td>R$ <?=$dados["valorLocacaoVideo"]?></td>
-            <td><?=$dados["nomeCategoria"]?></td>
-            <td><?=$dados["statusVideo"]?></td>
-        </tr>
         <?php
-       }
+        while ($dados = mysqli_fetch_assoc($rs)) {
+            ?>
+            <tr>
+                <td><?= $dados["idVideo"] ?></td>
+                <td><?= $dados["tituloVideo"] ?></td>
+                <td><?= $dados["duracaoVideo"] ?></td>
+                <td>R$ <?= $dados["valorLocacaoVideo"] ?></td>
+                <td><?= $dados["nomeCategoria"] ?></td>
+                <td><?= $dados["statusVideo"] ?></td>
+                <td>
+                    <a href="index.php?menu=editar-videos&idVideo=<?= $dados["idVideo"] ?>">Editar</a>
+                </td>
+                <td>
+                    <a href="index.php?menu=excluir-videos&idVideo=<?= $dados["idVideo"] ?>">Excluir</a>
+                </td>
+            </tr>
+            <?php
+        }
         ?>
     </tbody>
 </table>
